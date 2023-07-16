@@ -29,11 +29,11 @@ export default async function handler(
       object: string;
       model: string;
       choices: {
-        message: {
+        message?: {
           role: string;
-          content: string;
+          content?: string;
         };
-      }[0];
+      }[];
       usage?: {
         prompt_tokens?: number;
         completion_tokens?: number;
