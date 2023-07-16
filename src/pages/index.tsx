@@ -20,9 +20,11 @@ export default function Home(): JSX.Element {
   function adjustView() {
     setTimeout(() => {
       const element = document.getElementById("last-item");
-      element!.scrollIntoView({
-        behavior: "smooth",
-      });
+      if (element !== null) {
+        element!.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
     }, 300);
   }
 
@@ -38,7 +40,7 @@ export default function Home(): JSX.Element {
     adjustView();
 
     try {
-      const response = await fetch("http://localhost:3000/api/v1/chat", {
+      const response = await fetch("/api/v1/chat", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
