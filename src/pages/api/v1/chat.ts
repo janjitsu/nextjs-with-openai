@@ -3,7 +3,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Configuration, OpenAIApi } from "openai";
 
-const key: string = "INSERT_OPENAI_KEY_HERE";
+const key: string = process.env["OPENAI_API_KEY"];
 
 export default async function handler(
   req: NextApiRequest,
@@ -13,6 +13,11 @@ export default async function handler(
 
   if (body?.input.length === 0 || !body) {
     res.status(400).json({ error: "Missing input value!" });
+    return;
+  }
+
+  if (key === undefined) {
+    res.status(500).json({ error: "Missing api key! Get it at openai.com" });
     return;
   }
 
