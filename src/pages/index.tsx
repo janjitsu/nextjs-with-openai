@@ -20,11 +20,9 @@ export default function Home(): JSX.Element {
   function adjustView() {
     setTimeout(() => {
       const element = document.getElementById("last-item");
-      if (element !== null) {
-        element!.scrollIntoView({
-          behavior: "smooth",
-        });
-      }
+      element?.scrollIntoView({
+        behavior: "smooth",
+      });
     }, 300);
   }
 
